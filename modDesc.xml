@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="63">
+
+    <author>sperrgebiet</author>
+    <version>1.0.0.0</version>
+
+    <title>
+        <de>Abkippseiten HUD</de>
+		<en>Tip Side HUD</en>
+	</title>
+
+	<iconFilename>modIcon.dds</iconFilename>
+	
+	<multiplayer supported="true"/>
+    
+	<description>
+        <de><![CDATA[Dieser Mod fügt ein neues HUD hinzu, mit welchem die Abkippseite des momentan ausgewählten Gerätes angezeigt wird. Somit ist es möglich 
+das Hilfemenü auszublenden und dennoch zu sehen welche Seite gerade gewählt ist.
+Mittles der rechten Steuerungstaste und T (RCtrl + T) lässt sich das Konfigurationsmenü aufrufen. Dabei ist zu beachten, dass das Konfigurationsmenü
+nur geöffnet werden kann wenn man auch einen Anhänger/Anbaugerät ausgewählt hat welches mehrere Abkippseiten unterstützt (aka: Das Abkippseiten HUD wird bereits angezeigt).
+Konfigurationsoptionen:
+- Position
+- Farbe
+- Iconset
+- Anzeigen/verbergen der Beschreibung der Abkippseite neben dem Icon
+- Icon/Text Skalierung von 0.5 bis 1.5 fach
+
+Die Tastenbelegung innerhalb des Konfigurationsmenüs wird auch nur anzeigt wenn diese geöffnet ist. Standardmässig sind dies:
+- Rechte Strg-Taste + Taste Rauf -> Menüpunkt rauf
+- Rechte Strg-Taste + Taste Runter -> Menüpunkt runter
+- Rechte Strg-Taste + Leeraste -> Menüpunkt ändern
+Alternativ kann auch die Maus zum ändern der Einstellungen verwendet werden. Mittels Mausrad kann navigiert, mittels der linken Maustaste eine Option verändert werden.
+
+Diese Einstellungen werden pro Savegame seperat gespeichert. Im Singleplayer befindet sich die Konfigurationsdatei unter: 
+modSettings/TipSideDisplay/savegameXX/Config.xml
+
+Im Multiplayer wird sowohl am Client, als auch am Server folgender Pfad verwendet:
+modSettings/TipSideDisplay/MP_SavegameName_MapId_MapTitle/Config.xml
+
+Credits für Ifko[nator] für sein aktualisiertes RegisterSpecialization script.
+]]>
+        </de>
+		<en><![CDATA[This mod adds a new HUD which shows the tip side of the currently selected implement/trailer. This enables you to hide the help menu, while still 
+be able to see the currently selected tip side.
+With the right control key and T (RCtrl + T) you can open the configuration menu. Please keep in mind that you can open the configuration menu only when
+a tipper/implement which supports multiple tip sides is currently selected (aka: You can already see the tip side HUD)
+Configuration options:
+- Position
+- Color
+- Iconset
+- Show/hide the description of the tip side next to the icon
+- Icon/Text scaling from 0.5 to 1.5 times
+
+The key bindings for the config menu are just visible when it's open. By default the following keybindings are used:
+- Right Ctrl Key + Key up -> Menu up
+- Right Ctrl Key + Key down -> Menu down
+- Right Ctrl Key + Space -> Change menu option
+
+As an additional option you can also use your mouse to navigate the menu. By using the mouse wheel you can navigate up and down, with a click of the left mouse button you can change a setting.
+
+These settings get saved per savegame. In Singleplayer this config file is located at:
+modSettings/TipSideDisplay/savegameXX/Config.xml
+
+In Multiplayer the following save location is used for the client & server:
+modSettings/TipSideDisplay/MP_SavegameName_MapId_MapTitle/Config.xml
+
+Credits to Ifko[nator] for his updated RegisterSpecialization script.
+]]>
+		</en>
+    </description>
+
+	<extraSourceFiles>
+		<sourceFile filename="RegisterSpecialization.lua" />
+	</extraSourceFiles>
+
+	<registerSpecializations debugPriority="0">
+		<registerSpecialization name="tipSideDisplay" className="TipSideDisplay" filename="tipSideDisplay.lua" searchedSpecializations="Trailer"/>
+	</registerSpecializations>
+
+	<actions>
+		<action name="tsd_toggleConfig" axisType="HALF" />
+		<action name="tsd_upConfig" axisType="HALF" />
+		<action name="tsd_downConfig" axisType="HALF" />
+		<action name="tsd_changeConfig" axisType="HALF" />
+	</actions>
+	<inputBinding>	
+		<actionBinding action="tsd_toggleConfig">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_t" />
+		</actionBinding>
+		<actionBinding action="tsd_upConfig">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_up" />
+		</actionBinding>
+		<actionBinding action="tsd_downConfig">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_down" />
+		</actionBinding>
+		<actionBinding action="tsd_changeConfig">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_space" />
+		</actionBinding>		
+    </inputBinding>	
+	
+	<l10n>
+		<text name="input_tsd_toggleConfig">
+			<de>AbkippHUD: Konfiguration</de>
+			<en>TipSideHUD: Configuration</en>
+		</text>
+		<text name="input_tsd_upConfig">
+			<de>AbkippHUD: Menüpunkt rauf</de>
+			<en>TipSideHUD: Menu up</en>
+		</text>	
+		<text name="input_tsd_downConfig">
+			<de>AbkippHUD: Menüpunkt runter</de>
+			<en>TipSideHUD: Menu down</en>
+		</text>	
+		<text name="input_tsd_changeConfig">
+			<de>AbkippHUD: Ändern</de>
+			<en>TipSideHUD: Change</en>
+		</text>			
+		<text name="conf_heading">
+			<de>TipSideHud Konfiguration</de>
+			<en>TipSideHud Configuration</en>
+		</text>		
+		<text name="PositionIndex">
+			<de>Position ändern</de>
+			<en>Change position</en>
+		</text>
+		<text name="ColorIndex">
+			<de>Farbe ändern</de>
+			<en>Change color</en>
+		</text>
+		<text name="IconSetIndex">
+			<de>Icons</de>
+			<en>Icons</en>
+		</text>
+		<text name="ShowText">
+			<de>Text anzeigen</de>
+			<en>Show text</en>
+		</text>
+		<text name="Scaling">
+			<de>Größenskalierung</de>
+			<en>Size scaling</en>
+		</text>
+		<text name="col_white">
+			<de>Weiss</de>
+			<en>White</en>
+		</text>
+		<text name="col_black">
+			<de>Schwarz</de>
+			<en>Black</en>
+		</text>
+		<text name="col_grey">
+			<de>Grau</de>
+			<en>Grey</en>
+		</text>
+		<text name="col_blue">
+			<de>Blau</de>
+			<en>Blue</en>
+		</text>
+		<text name="col_red">
+			<de>Rot</de>
+			<en>Red</en>
+		</text>
+		<text name="col_green">
+			<de>Grün</de>
+			<en>Green</en>
+		</text>
+		<text name="col_yellow">
+			<de>Gelb</de>
+			<en>Yellow</en>
+		</text>
+		<text name="col_pink">
+			<de>Pink</de>
+			<en>Pink</en>
+		</text>
+		<text name="col_turquoise">
+			<de>Türkis</de>
+			<en>Turquoise</en>
+		</text>
+		<text name="col_brown">
+			<de>Braun</de>
+			<en>Brown</en>
+		</text>
+		<text name="pos1">
+			<de>Unterhalb des Früchte HUD</de>
+			<en>Below the fruit HUD</en>
+		</text>
+		<text name="pos2">
+			<de>Neben dem Fahrzeugschema</de>
+			<en>Next to the vehicle schema</en>
+		</text>
+		<text name="pos3">
+			<de>Links neben dem Wetter Icon</de>
+			<en>Left to the weather icon</en>
+		</text>
+		<text name="pos4">
+			<de>Oben zentriert</de>
+			<en>Top centered</en>
+		</text>
+		<text name="pos5">
+			<de>Unten zentriert</de>
+			<en>Bottom centered</en>
+		</text>
+	</l10n>
+
+</modDesc>
