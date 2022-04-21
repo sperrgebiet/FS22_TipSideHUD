@@ -390,12 +390,14 @@ function TipSideDisplay:checkRenderImplements(vehicle)
 	local allImp = {}
 	-- Credits to Tardis from FS17
 	local function addAllAttached(obj)
-		for _, imp in pairs(obj:getAttachedImplements()) do
-			addAllAttached(imp.object)
-			table.insert(allImp, imp)
+		if obj.getAttachedImplements ~= nil then
+			for _, imp in pairs(obj:getAttachedImplements()) do
+				addAllAttached(imp.object)
+				table.insert(allImp, imp)
+			end
 		end
 	end
-		
+	
 	addAllAttached(vehicle)
 
 	if allImp ~= nil then

@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="63">
+<modDesc descVersion="65">
 
     <author>sperrgebiet</author>
-    <version>1.0.0.0</version>
+	<contributors>Ifko[nator]</contributors>
+    <version>1.0.0.2</version>
 
     <title>
         <de>Abkippseiten HUD</de>
@@ -37,7 +38,9 @@ modSettings/TipSideDisplay/savegameXX/Config.xml
 Im Multiplayer wird sowohl am Client, als auch am Server folgender Pfad verwendet:
 modSettings/TipSideDisplay/MP_SavegameName_MapId_MapTitle/Config.xml
 
-Credits für Ifko[nator] für sein aktualisiertes RegisterSpecialization script.
+Changelog:
+1.0.0.1: Fehler mit Bigbags behoben
+1.0.0.2: RegisterSpecialization.lua geändert damit mit LS22 1.4.0.1 kein Fehler mehr ins Log geschrieben wird; ModDesc Version erhöht
 ]]>
         </de>
 		<en><![CDATA[This mod adds a new HUD which shows the tip side of the currently selected implement/trailer. This enables you to hide the help menu, while still 
@@ -64,7 +67,9 @@ modSettings/TipSideDisplay/savegameXX/Config.xml
 In Multiplayer the following save location is used for the client & server:
 modSettings/TipSideDisplay/MP_SavegameName_MapId_MapTitle/Config.xml
 
-Credits to Ifko[nator] for his updated RegisterSpecialization script.
+Changelog:
+1.0.0.1: Fixed error with bigbags
+1.0.0.2: Changed RegisterSpecialization.lua to adopt to FS22 1.4.0.1; increased ModDesc version
 ]]>
 		</en>
     </description>
