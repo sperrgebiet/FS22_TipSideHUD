@@ -1,4 +1,4 @@
--- tipSideDisplay specialization for FS19
+-- tipSideDisplay specialization for FS22
 --
 -- This mod adds a new HUD which shows the tip side of the currently selected implement/trailer. This enables you to hide the help menu, while still 
 -- be able to see the currently selected tip side.
@@ -8,9 +8,13 @@
 
 TipSideDisplay = {}
 TipSideDisplay.eventName = {}
-TipSideDisplay.ModName = g_currentModName
-TipSideDisplay.ModDirectory = g_currentModDirectory
-TipSideDisplay.Version = "1.0.0.5"
+-- It's great that Giants gets rid of functions as part of an update. Now we can do things more complicated than before
+--TipSideDisplay.ModName = g_currentModName
+--TipSideDisplay.ModDirectory = g_currentModDirectory
+TipSideDisplay.ModName = "FS22_TipSideHUD"
+TipSideDisplay.ModDirectory = g_modManager.nameToMod.FS22_TipSideHUD.modDir
+
+TipSideDisplay.Version = "1.0.0.2"
 
 TipSideDisplay.debug = fileExists(TipSideDisplay.ModDirectory ..'debug')
 
